@@ -3,7 +3,7 @@ Microeconomics/macroeconomics graphs made with ggplot2
 
 This package allows creating microeconomics or macroeconomics charts in R with simple functions. This package inspiration is [reconPlots](https://github.com/andrewheiss/reconPlots) by Andrew Heiss.
 
-THE PACKAGE IS UNDER HEAVY DEVELOPMENT. WORK IN PROGRESS. You can suggest ideas submiting an Issue
+THE PACKAGE IS UNDER HEAVY DEVELOPMENT. WORK IN PROGRESS. You can suggest ideas by submitting an Issue
 
 ## TODO
 - [ ] Finish documentation
@@ -15,6 +15,8 @@ THE PACKAGE IS UNDER HEAVY DEVELOPMENT. WORK IN PROGRESS. You can suggest ideas 
 - [ ] Shade producer and consumer surplus
 - [ ] Add Edgeworth box
 - [ ] General equilibrium (suggested by Ilya)
+- [x] Prospect theory value function (suggested by @brshallo)
+- [x] Neoclassical labor supply (suggested by @hilton1)
 
 
 ## Index
@@ -22,11 +24,14 @@ THE PACKAGE IS UNDER HEAVY DEVELOPMENT. WORK IN PROGRESS. You can suggest ideas 
 - [Supply curve](#supply)
 - [Demand curve](#demand)
 - [Supply and demand](#supply-and-demand)
+- [Neoclassical labor supply](#neoclassical-labor-supply)
 - [Indifference curves](#indifference-curves)
 - [Production–possibility frontier](#productionpossibility-frontier)
 - [Tax graph](#tax-graph)
+- [Prospect Theory value function](#prospect-theory-value-function)
 - [Laffer curve](#laffer-curve)
 - [Calculating the intersections](#Intersections)
+- [Citation](#citation)
 
 ## Installation
 
@@ -141,6 +146,15 @@ p + annotate("segment", x = 2.5, xend = 3, y = 6.5, yend = 7,                # A
  <img src="https://user-images.githubusercontent.com/67192157/99189792-536f9800-2763-11eb-8848-0149b743e209.png">
 </p>
 
+## Neoclassical labor supply
+
+```r
+neolabsup(x = c(2, 3, 5, 7), xlab = "Quantity of\n labor supplied", ylab = "Wage rate")
+```
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/67192157/102769600-2c6c3d80-4383-11eb-84b8-aca39c86ac62.png">
+</p>
 
 ## Indifference curves
 
@@ -280,6 +294,25 @@ tax_graph(demand, supply, supply_tax, shaded = TRUE)
  <img src="https://user-images.githubusercontent.com/67192157/100351250-71eb5400-2feb-11eb-87d1-dae3705b5ff0.png">
 </p>
 
+## Prospect theory value function
+
+```r
+ptvalue(sigma = 0.88,             # From Tversky & Kahneman, 1992
+        lambda = -2.25,           # From Tversky & Kahneman, 1992
+        col = 2,                  # Color of the curve
+        xint = seq(0, 75, 25),    # Intersections
+        xintcol = 4,              # Color of the intersection segments
+        ticks = TRUE,             # Display ticks on the axes
+        xlabels = TRUE,           # Display the X-axis tick labels
+        ylabels = TRUE,           # Display the Y-axis tick labels
+        by_x = 25, by_y = 50,     # Axis steps
+        main = "Prospect Theory Value Function")
+```
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/67192157/101017726-c4d48680-356a-11eb-9bd6-e62854814143.png">
+</p>
+
 
 
 ## Laffer curve
@@ -370,6 +403,26 @@ ggplot(data.frame(x = x_range)) +
 <p align="center">
  <img src="https://user-images.githubusercontent.com/67192157/100347242-5bda9500-2fe5-11eb-9e29-03904eb16a8d.png">
 </p>
+
+## Citation
+
+```r
+To cite package ‘econocharts’ in publications use:
+
+  José Carlos Soage González and Andrew Heiss (2020). econocharts: Microeconomics and Macroeconomics Charts Made with 'ggplot2'. R package version 1.0.
+  https://r-coder.com/, https://r-coder.com/economics-charts-r/.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {econocharts: Microeconomics and Macroeconomics Charts Made with 'ggplot2'},
+    author = {José Carlos {Soage González} and Andrew Heiss},
+    year = {2020},
+    note = {R package version 1.0},
+    url = {https://r-coder.com/, https://r-coder.com/economics-charts-r/},
+  }
+
+```
 
 ## Social Media
 - Facebook: [https://www.facebook.com/RCODERweb](https://www.facebook.com/RCODERweb)
